@@ -1,0 +1,13 @@
+{
+  "name": "libprotein",
+  "description": "Simple proteins library",
+  "version": "0.0.5",
+  "author": "E.Naumenko",
+  "repository": {
+    "type" : "git",
+    "url": "https://github.com/EugeneN/libprotein"
+  },
+  "scripts": {"postinstall": "cake build"},
+  "engine" : [ "node >=0.1.102" ],
+  "main" : "./index.js"
+}
