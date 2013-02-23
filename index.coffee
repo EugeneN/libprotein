@@ -59,6 +59,7 @@ X =
         g
 
     data_to_opts: (sufx, node) ->
+        # XXX no jquery here!
         $node = jQuery node
         keys = Object.keys $node.data()
 
