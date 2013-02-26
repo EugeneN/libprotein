@@ -79,5 +79,17 @@ X =
     add: (values...) ->
         values.reduce (a, b) -> X.add2 a, b
 
+    uniq: (array) ->
+        seen = {}
+        results = []
+        for i in array
+            unless i of seen
+                results.push i
+                seen[i] = true
+
+        results
+
+
+
 
 module.exports = X
