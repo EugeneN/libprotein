@@ -1,13 +1,13 @@
 {
   "name": "libprotein",
   "description": "Simple proteins library",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "author": "E.Naumenko",
   "repository": {
     "type" : "git",
     "url": "https://github.com/EugeneN/libprotein"
   },
-  "scripts": {"postinstall": "coffee index.coffee -c"},
+  "scripts": {"postinstall": "coffee -c index.coffee"},
   "engine" : [ "node >=0.1.102" ],
   "main" : "./index.js"
 }
