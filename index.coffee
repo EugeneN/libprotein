@@ -9,6 +9,8 @@ X =
 
     compose2: (f, g) -> (args...) -> f g args...
 
+    compose3: (f, g, h) -> (args...) -> f(g(h(args...)))
+
     first: (s) -> s[0]
 
     identity: (x) -> x
@@ -59,7 +61,6 @@ X =
         g
 
     data_to_opts: (sufx, node) ->
-        # XXX no jquery here!
         $node = jQuery node
         keys = Object.keys $node.data()
 
@@ -80,15 +81,29 @@ X =
     add: (values...) ->
         values.reduce (a, b) -> X.add2 a, b
 
-    uniq: (array) ->
-        seen = {}
-        results = []
-        for i in array
-            unless i of seen
-                results.push i
-                seen[i] = true
+    pubsubhub: ->
+        do ->
+            q = {}
 
-        results
+            sub: (name, f) ->
+                q[name] or= []
+                q[name].push f
+
+            pub: (name, data...) ->
+                q[name]?.map (f) -> f data...
+
+            unsub: (name, f) ->
+                if q[name]
+                    q[name] = q[name].filter (s) -> s isnt f
+
+            unsuball: (name) ->
+                q[name] = [] if q[name]
+
+    distinct: (list) ->
+        t = {}
+        t[i] = i for i in list
+        (v for k, v of t)
+
 
 
 
