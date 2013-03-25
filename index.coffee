@@ -104,7 +104,7 @@ X =
         t[i] = i for i in list
         (v for k, v of t)
 
-
+    repeat: (v, n) -> (v for i in [0...n])
 
 
 
