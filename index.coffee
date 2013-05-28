@@ -35,7 +35,7 @@ X =
         if (X.is_array v)
             !!v.length
         else if (X.is_object v)
-            !!(Object.keys(v).length)
+            !!((key for key of v).length)
         else
             !!v
 
@@ -62,7 +62,7 @@ X =
 
     data_to_opts: (sufx, node) ->
         $node = jQuery node
-        keys = Object.keys $node.data()
+        keys = (key for key of $node.data())
 
         X.to_hash (keys.filter((key) -> key[0...sufx.length] is sufx)
                        .map((key) -> [key[sufx.length...], ($node.data key)]))
