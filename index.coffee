@@ -60,6 +60,7 @@ X =
         g.meta = f.meta
         g
 
+    # TODO: remove this
     data_to_opts: (sufx, node) ->
         $node = jQuery node
         keys = Object.keys $node.data()
