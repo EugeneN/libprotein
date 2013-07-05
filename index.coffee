@@ -30,6 +30,8 @@ X =
         else
             v instanceof {}.constructor
 
+    is_nan: (v) -> v isnt v
+
     bool: (v) ->
         # FIXME
         if (X.is_array v)
@@ -60,7 +62,6 @@ X =
         g.meta = f.meta
         g
 
-    # TODO: remove this
     data_to_opts: (sufx, node) ->
         $node = jQuery node
         keys = Object.keys $node.data()
@@ -106,6 +107,17 @@ X =
         (v for k, v of t)
 
     repeat: (v, n) -> (v for i in [0...n])
+
+    make_lambda: (expression) ->
+        if expression is "" or expression is null
+            X.identity
+        
+        else if (expression.indexOf "=>") is -1
+            new Function "_,__,___,____", "return " + expression
+        
+        else
+            expr = expression.match /^[(\s]*([^()]*?)[)\s]*=>(.*)/
+            new Function expr[1], "return " + expr[2]
 
 
 
