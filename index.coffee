@@ -32,6 +32,8 @@ X =
 
     is_nan: (v) -> v isnt v
 
+    is_string: (v) -> typeof v is 'string'
+
     bool: (v) ->
         # FIXME
         if (X.is_array v)
