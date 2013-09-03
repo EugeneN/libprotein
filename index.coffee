@@ -122,6 +122,19 @@ X =
             expr = expression.match /^[(\s]*([^()]*?)[)\s]*=>(.*)/
             new Function expr[1], "return " + expr[2]
 
+    urlencode: (d) ->
+        ("#{encodeURIComponent k}=#{encodeURIComponent v}" for k, v of d).join '&'
+
+    add_params_to_url: (url, params) ->
+        has_params = (url.indexOf '?') > -1
+        start_char = if has_params then '&' else '?'
+
+        url + start_char + (X.urlencode params)
+
+    # takes two lists and returns a list of corresponding pairs. 
+    # If one input list is short, excess elements of the longer list are discarded.
+    zip: (one, two) ->
+        [one[i], two[i]] for i in [0..Math.min(one.length, two.length)]
 
 
 module.exports = X
