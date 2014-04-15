@@ -107,6 +107,12 @@ X =
             unsuball: (name) ->
                 q[name] = [] if q[name]
 
+            unsubcond: (name, cond) ->
+               if q[name]
+                    q[name] = q[name].filter cond
+
+            get: (name) -> q[name]
+
     distinct: (list) ->
         t = {}
         t[i] = i for i in list
